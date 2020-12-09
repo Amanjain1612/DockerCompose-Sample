@@ -1,0 +1,32 @@
+version: "3.9"
+
+services: 
+    application1:
+        image: application1:v1
+        build:
+            context: ./java_app_1
+            dockerfile: Dockerfile
+
+    application2:
+        image: application1:v2
+        build:
+            context: ./java_app_2
+            dockerfile: Dockerfile
+
+    ngnix-server:
+        image: nginx:v1
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        ports: 
+            - "80:80"
+        depends_on:
+            - application1
+            - application2
+
+    percona-container:
+         image: percona/percona-server
+         ports: 
+             - "3306:3306"
+         environment:
+             - MYSQL_ROOT_PASSWORD=root
