@@ -7,5 +7,7 @@ This Contains a following files:
 All the containers can be started using the following command:
 
 git clone https://github.com/Amanjain1612/DockerCompose-Sample.git
+
 cd DockerCompose-Sample
+
 docker-compose up -d
